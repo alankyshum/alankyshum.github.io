@@ -1,0 +1,2 @@
+Redirect /_notes /notes
+Redirect /.sass-cache index.html

@@ -1,0 +1,12 @@
+{
+  "name": "alankyshum.github.io",
+  "version": "1.0.0",
+  "description": "Alan Shum's Personal Page",
+  "main": "index.html",
+  "repository": "git@github.com:alankyshum/alankyshum.github.io.git",
+  "author": "alan <alan200994@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "normalize.css": "^5.0.0"
+  }
+}
