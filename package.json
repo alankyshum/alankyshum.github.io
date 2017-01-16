@@ -7,6 +7,8 @@
   "author": "alan <alan200994@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "normalize.css": "^5.0.0"
+    "gulp": "^3.9.1",
+    "normalize.css": "^5.0.0",
+    "vue": "^2.1.8"
   }
 }
