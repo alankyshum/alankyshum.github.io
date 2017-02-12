@@ -14,44 +14,68 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://alanshum.com">
     <!--<meta property="og:image" content="">-->
-    <link rel="stylesheet" href="vendor/normalize.css">
+    <link rel="stylesheet" href="assets/vendor/normalize.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
 </head>
 <body>
-  <!--FUCK THAT  -->
-  <div class="page-wrapper">
-    <header>
-      <div id='me'>
-        <div class="logo"></div>
-        <div class="about">
-          <h1 class='about-name'>William Mitchell</h1>
-          <h4 class='about-tagline'>Full-Stack Developer | Tech Enthusiat</h4>
-        </div>
-      </div>
-      <div id="navigation">
-        <a class='navigation-item active' href="#biography">Biography</a>
-        <a class='navigation-item' href="#skills">Skills</a>
-        <a class='navigation-item' href="#experience">Experience</a>
-        <a class='navigation-item' href="#recognitions">Recognitions</a>
-      </div>
-    </header>
 
-    <main>
-      <div id="biography" class='section active'>
-        <blockquote class='objective'>
-          To learn new technologies and creating something interesting, with best industrial practice. To work in a team with talented, kind, and joyful people, whom I can learn from, and be friend with.
-        </blockquote>
-        <div class="avatar">
-
-        </div>
-      </div>
-      <div id="skills" class="section"></div>
-      <div id="experience" class="section"></div>
-      <div id="recognitions" class="section"></div>
-    </main>
+  <div id='mainApp'>
+    <vue-aside class='brief'></vue-aside>
+    <vue-main class='main'></vue-main>
   </div>
 
-  <script src='vendor/vue.min.js'></script>
+  <!-- TEMPLATES -->
+  <template id="vue-aside">
+    <aside>
+      <div class="brief-logo">
+          <p>ALAN</p>
+          <p>KAYI</p>
+          <p>SHUM</p>
+        </div>
+        <div class="brief-contacts">
+          <div class="contact" v-for="contact in contacts">
+            <label for="">{{contact.type}}</label>
+            <p v-for='contactItem in contact.items'>
+              <a v-if='contactItem.text' v-bind:href="contactItem.href">{{contactItem.text}}</a>
+              <a v-if='contactItem.icon' v-bind:class='contactItem.icon' v-bind:href="contactItem.href"></a>
+            </p>
+          </div>
+        </div>
+    </aside>
+  </template>
+
+  <template id='vue-main'>
+    <main>
+      <div class="picture-wrapper">
+        <div class="picture">
+          <img src="assets/img/me.jpg" alt="">
+        </div>
+      </div>
+      <div class="content">
+        <div class="content-name">
+          <h1>SHUM</h1>
+          <h1 class='label-line'>KAYI</h1>
+          <h5 class='content-title'>Full Stack Web Developer</h5>
+        </div>
+        <div class="content-caption">
+          <span>I'm</span>
+          <div class='role-list'>
+            <ul>
+              <li v-for='role in roles'>{{role}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="content-resume">
+          <button>Resume</button>
+        </div>
+      </div>
+    </main>
+  </template>
+
+  <script src='assets/vendor/vue.js'></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -1,184 +1,218 @@
-// --- VARIABBLES
-$headingColor: #333;
-$bodyColor: #545454;
+// STYLE CONFIG
 $white: #fff;
-$black: #000;
-$primaryColor: #10802f;
-$bgColor: #f2f2f2;
-
-$pagePaddingSide: 50px;
-
-html {
-  --font-heading-color: $headingColor;
-  --font-body-color: $bodyColor;
-  --primary-color: $primaryColor;
-  --bg-color: $bgColor;
+$textColour: #fff;
+$themeColour: #132147;
+$lightenThemeColour: #0073d5;
+// SIZES
+$pictureWidth: 40vw;
+$pictureLeftPadding: 20vw;
+$layout_L: 1200px;
+// MIXINS
+@mixin minWidth($q) {
+  @media screen and (min-width: $q) { @content }
 }
-body {
-  font-family: 'Helvetica Neue', 'Century Gothic', Sans-Serif;
-  font-weight: 400;
+
+:root {
+  --theme-color: $themeColour;
   font-size: 16px;
-  background-color: var(--bg-color);
-}
-h1 {
-  font-size: 3rem;
-}
-
-// -------------
-// --- debug ---
-// -------------
-.placeholder {
-  width: 300px;
-  height: 300px;
-  background-color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  background-color: #111;
 }
 
-
-// --------------
-// --- STYLES ---
-// --------------
-.page-wrapper {
-  width: 80%;
-  min-width: 600px;
-  margin: 0 auto;
-  border: 1px solid transparentize($black, 0.8);
-  border-radius: 2px;
-  box-shadow: 0px 1px 10px transparentize($black, 0.8);
+// STYLE BASE
+a[href] {
+  text-decoration: none;
 }
 
-// --- HEADER
-#me {
-  color: $white;
-  background-image: url('../../assets/img/big_city.jpg');
-  background-size: cover;
-  background-position: 0 100%;
-  height: 250px;
+#mainApp {
+  display: flex;
+}
+
+.brief {
+  $asidePadding: 30px;
+  color: $textColour;
+  background-color: var(--theme-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: $pictureLeftPadding;
+  height: 100vh;
+  width: 35vw;
+  flex-grow: 0.5;
+  min-width: 400px;
+  box-sizing: border-box;
+  @include minWidth($layout_L) {
+    flex-grow: 0;
+    width: calc(300px + #{$pictureLeftPadding});
+  }
+  &-logo {
+    padding: $asidePadding;
+    user-select: none;
+    cursor: default;
+    p {
+      font-family: monospace;
+      font-size: 36px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      line-height: 1;
+      margin: 0;
+      padding: 0;
+      transition: letter-spacing .3s;
+    }
+    &:hover {
+      p {
+        letter-spacing: 25px;
+      }
+    }
+  }
+  &-contacts {
+    padding: $asidePadding;
+    word-wrap: break-word;
+    .contact {
+      label {
+        font-size: 1.2rem;
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      a {
+        font-size: 1rem;
+        color: $textColour;
+        box-sizing: border-box;
+        &:hover {
+          border-bottom: 1px dashed $textColour;
+        }
+      }
+      p {
+        margin: 0;
+      }
+    }
+    .contact + .contact {
+      margin-top: 20px;
+    }
+  }
+}
+
+.main {
   position: relative;
-  z-index: 0;
-  padding: 30px $pagePaddingSide;
-  &:after {
-    content: ' ';
-    background: linear-gradient(to top, $black, transparent);
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0 ;
-    z-index: 1;
-    position: absolute;
-  }
-  * {
-    position: relative;
-    z-index: 2;
-  }
+  display: flex;
   > div {
     display: inline-block;
-    vertical-align: middle;
   }
-  .logo {
-    $logoSize: 120px;
-    $borderWidth: 3px;
-    width: $logoSize;
-    height: $logoSize;
-    border: $borderWidth solid $white;
+  .picture-wrapper {
+    width: 0;
   }
-  .about {
-    vertical-align: middle;
-    margin-left: 30px;
+  .picture {
+    width: 40vw;
+    height: 90vh;
+    margin-top: 5vh;
+    margin-left: -$pictureLeftPadding;
+    @include minWidth($layout_L) {
+      max-width: 700px;
+    }
+    img {
+      filter: #{'grayscale' + '(' + ')'};
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0px 0px 20px #000;
+    }
+  }
+  .content {
+    margin-left: $pictureLeftPadding;
+    padding-left: 20px;
+    color: $textColour;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
     &-name {
-      text-transform: uppercase;
-      letter-spacing: -2px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      width: 80px;
-      line-height: 1;
-    }
-    &-tagline {
-      margin-top: 0;
-      text-transform: uppercase;
-      font-weight: 100;
-      letter-spacing: 1px;
-    }
-  }
-}
-#navigation {
-  $itemHeight: 40px;
-  padding-left: $pagePaddingSide;
-  position: relative;
-  margin-top: -$itemHeight;
-  .navigation {
-    &-item {
-      $border: 1px solid $white;
-      text-transform: uppercase;
-      font-weight: 100;
-      letter-spacing: 1px;
-      height: $itemHeight;
-      text-align: center;
-      vertical-align: middle;
-      display: inline-block;
-      padding: 5px 20px;
-      box-sizing: border-box;
-      border-top: $border;
-      border-right: $border;
-      margin-left: -3px;
-      transition: background-color .3s;
-      &:nth-of-type(1) {
-        border-left: $border;
+      * {
+        margin: 0;
       }
-      &, &:hover, &:focus {
-        color: $white;
-        text-decoration: none;
+      h1 {
+        font-weight: 600;
+        text-align: justify;
       }
-      &.active, &:hover, &:focus {
-        background-color: transparentize($white, 0.7);
-      }
-
-      // --- state
-      &.active {
+      .label-line {
         position: relative;
+        color: $lightenThemeColour;
         &:after {
           content: ' ';
+          border-bottom: 2px solid $lightenThemeColour;
+          width: 200px;
+          height: 0;
+          top: 0;
+          left: -100px;
+          z-index: 1;
           position: absolute;
-          border-left: 10px solid transparent;
-          border-right: 10px solid transparent;
-          border-bottom: 10px solid $white;
-          bottom: 0;
-          left: calc(50% - 5px);
         }
       }
     }
-  }
-}
+    &-title {
+      margin-top: 5px;
+    }
 
-
-// --- MAIN
-main {
-  .section {
-    padding: 30px $pagePaddingSide;
-    background-color: $white;
-    opacity: 0.9;
-    z-index: 2;
-    position: relative;
-    pointer-events: none;
-    background-color: $black;
-    transform: translateY(-100%);
-    // &.active {
-    //   opacity: 1;
-    //   pointer-events: all;
-    //   transform: translateY(0);
-    // }
-  }
-}
-
-#biography {
-  display: flex;
-  .objective {
-    line-height: 2;
-    font-family: serif;
-    font-size: 1.5rem;
-  }
-  .avatar {
-    background-color: $black;
-    min-width: 240px;
-    height: 240px;
+    // components
+    &-caption {
+      $itemHeight: 30px;
+      margin-top: 10px;
+      height: $itemHeight;
+      > * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .role-list {
+        margin-top: 12px;
+        height: 100%;
+        overflow: hidden;
+        ul {
+          @mixin generateFadeItemsAnimation($showDuration, $fadeDuration, $itemsCnt, $displacement) {
+            $totalDuration: ($showDuration + $fadeDuration) * $itemsCnt;
+            animation: fadeItems #{$totalDuration}s infinite;
+            @keyframes fadeItems {
+              @for $i from 0 through $itemsCnt - 1 {
+                #{($fadeDuration + $showDuration) * $i / $totalDuration * 100}% {
+                  transform: translateY(#{-$displacement * $i});
+                }
+                #{($showDuration * ($i + 1) + $fadeDuration * $i) / $totalDuration * 100}% {
+                  transform: translateY(#{-$displacement * $i});
+                }
+              }
+              100% {
+                transform: translateY(0);
+              }
+            }
+          }
+          margin: 0;
+          padding: 0;
+          transform: translateY(-$itemHeight);
+          @include generateFadeItemsAnimation(1, 0.3, 4, $itemHeight);
+          li {
+            list-style: none;
+            height: $itemHeight;
+          }
+        }
+      }
+    }
+    &-resume {
+      margin-top: 30px;
+      button {
+        $buttonWidth: 120px;
+        color: $textColour;
+        width: $buttonWidth;
+        border: 1px solid $textColour;
+        background: linear-gradient(to right, $lightenThemeColour 50%, transparent 50%);
+        background-size: #{$buttonWidth * 2};
+        background-position-x: -$buttonWidth;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-position .3s;
+        &:hover {
+          background-position-x: 0;
+        }
+      }
+    }
   }
 }

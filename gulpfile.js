@@ -2,7 +2,11 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 
 gulp.task('move', function() {
-  gulp.src(['node_modules/normalize.css/normalize.css', 'node_modules/vue/dist/vue.min.js'])
+  gulp.src([
+    'node_modules/normalize.css/normalize.css',
+    'node_modules/vue/dist/vue.min.js',
+    'node_modules/vue/dist/vue.js'
+  ])
   .pipe(gulp.dest('assets/vendor'));
 });
 
@@ -14,7 +18,7 @@ gulp.task('build:scss', function() {
 
 
 // --- WORK FLOW
-gulp.task('build', ['move', 'build:scss'], function() {});
+gulp.task('default', ['move', 'build:scss'], function() {});
 
 gulp.task('watch', function() {
   gulp.watch('src/scss/**', ['build:scss']);
