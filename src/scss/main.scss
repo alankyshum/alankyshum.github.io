@@ -5,7 +5,7 @@ $themeColour: #132147;
 $lightenThemeColour: #0073d5;
 // SIZES
 $pictureWidth: 40vw;
-$pictureLeftPadding: 20vw;
+$pictureLeftPadding: 300px;
 $layout_L: 1200px;
 // MIXINS
 @mixin minWidth($q) {
@@ -38,14 +38,8 @@ a[href] {
   justify-content: space-between;
   padding-right: $pictureLeftPadding;
   height: 100vh;
-  width: 35vw;
-  flex-grow: 0.5;
-  min-width: 400px;
+  width: 600px;
   box-sizing: border-box;
-  @include minWidth($layout_L) {
-    flex-grow: 0;
-    width: calc(300px + #{$pictureLeftPadding});
-  }
   &-logo {
     padding: $asidePadding;
     user-select: none;
@@ -101,16 +95,12 @@ a[href] {
     display: inline-block;
   }
   .picture-wrapper {
-    width: 0;
+    width: 20vw;
   }
   .picture {
-    width: 40vw;
     height: 90vh;
-    margin-top: 5vh;
     margin-left: -$pictureLeftPadding;
-    @include minWidth($layout_L) {
-      max-width: 700px;
-    }
+    margin-top: 5vh;
     img {
       filter: #{'grayscale' + '(' + ')'};
       object-fit: cover;
@@ -120,13 +110,12 @@ a[href] {
     }
   }
   .content {
-    margin-left: $pictureLeftPadding;
-    padding-left: 20px;
     color: $textColour;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100vh;
+    padding-left: 20px;
     &-name {
       * {
         margin: 0;
