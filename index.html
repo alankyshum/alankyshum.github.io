@@ -22,7 +22,7 @@
 </head>
 <body>
 
-  <div id='mainApp'>
+  <div id='mainApp' v-bind:class='{"resume-mode": resumeMode}'>
     <vue-aside class='brief colour-animation'></vue-aside>
     <vue-main class='main'></vue-main>
   </div>
@@ -31,9 +31,9 @@
   <template id="vue-aside">
     <aside>
       <div class="brief-logo">
-          <p>ALAN</p>
-          <p>KAYI</p>
-          <p>SHUM</p>
+          <p><span>ALAN</span></p>
+          <p><span>KAYI</span></p>
+          <p><span>SHUM</span></p>
         </div>
         <div class="brief-contacts">
           <div class="contact" v-for="contact in contacts">
@@ -73,8 +73,8 @@
             </ul>
           </div>
         </div>
-        <div class="content-resume colour-animation">
-          <button>Resume</button>
+        <div class="content-resume-action colour-animation">
+          <button v-on:click='toggleResumeMode()'>{{buttonText}}</button>
         </div>
       </div>
     </main>

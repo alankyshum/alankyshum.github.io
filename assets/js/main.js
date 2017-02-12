@@ -31,6 +31,7 @@ const DATA = {
     }]
   },
   'vue-main': {
+    buttonText: 'Resume',
     roles: [
       'a Tech 💕 Enthusiat',
       'a Full-Stack 🤓 Developer',
@@ -39,7 +40,16 @@ const DATA = {
       'living in 🇺🇸  San Francisco'
     ]
   }
-}
+};
+
+const METHODS = {
+  'vue-main': {
+    toggleResumeMode() {
+      mainApp.resumeMode = !mainApp.resumeMode;
+      this.buttonText = mainApp.resumeMode ? 'Home' : 'Resume'
+    }
+  }
+};
 
 function registerComponents() {
   const vueComponentsTemplates = document.querySelectorAll('[id*=vue-]');
@@ -47,7 +57,8 @@ function registerComponents() {
   for (let template of vueComponentsTemplates) {
     componentsList[template.id] = Vue.component(template.id, {
       template: document.getElementById(template.id).innerHTML,
-      data: () => DATA[template.id] || {}
+      data: () => DATA[template.id] || {},
+      methods: METHODS[template.id] || null
     });
   }
   return componentsList;
@@ -55,8 +66,11 @@ function registerComponents() {
 const components = registerComponents();
 
 function registerElements() {
-  new Vue({
-    el: '#mainApp'
+  return new Vue({
+    el: '#mainApp',
+    data: {
+      resumeMode: false
+    }
   });
 }
-registerElements();
+const mainApp = registerElements();
