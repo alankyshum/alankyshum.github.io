@@ -17,18 +17,26 @@ const DATA = {
       }]
     }, {
       type: 'Social',
+      inline: true,
       items: [{
         icon: 'fa fa-facebook',
         href: 'https://www.facebook.com/alanshumky'
+      }, {
+        icon: 'fa fa-twitter',
+        href: 'https://twitter.com/alan200994'
+      }, {
+        icon: 'fa fa-linkedin',
+        href: 'https://www.linkedin.com/in/kyshum/'
       }]
     }]
   },
   'vue-main': {
     roles: [
-      'a Tech Enthusiat',
-      'a Full Developer',
-      'a Hong Konger',
-      'living in San Francisco'
+      'a Tech 💕 Enthusiat',
+      'a Full-Stack 🤓 Developer',
+      'a 👶 brother of 2 elder sisters',
+      'a 🇭🇰  Hong Konger',
+      'living in 🇺🇸  San Francisco'
     ]
   }
 }

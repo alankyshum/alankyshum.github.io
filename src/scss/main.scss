@@ -18,12 +18,22 @@ $layout_L: 1200px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   background-color: #111;
+  filter: hue-rotate(10deg);
 }
 
-// STYLE BASE
 a[href] {
   text-decoration: none;
 }
+
+.colour-animation {
+  animation: changingThemeColor 30s infinite alternate;
+  @keyframes changingThemeColor {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+}
+
+// STYLES
 
 #mainApp {
   display: flex;
@@ -65,21 +75,24 @@ a[href] {
     word-wrap: break-word;
     .contact {
       label {
-        font-size: 1.2rem;
+        font-size: 0.7rem;
         display: block;
-        font-weight: bold;
+        font-weight: 100;
         margin-bottom: 5px;
+        opacity: .5;
       }
       a {
         font-size: 1rem;
         color: $textColour;
         box-sizing: border-box;
-        &:hover {
-          border-bottom: 1px dashed $textColour;
-        }
       }
       p {
         margin: 0;
+      }
+      span {
+        a + a {
+          margin-left: 10px;
+        }
       }
     }
     .contact + .contact {
@@ -94,19 +107,40 @@ a[href] {
   > div {
     display: inline-block;
   }
-  .picture-wrapper {
-    width: 20vw;
-  }
   .picture {
     height: 90vh;
     margin-left: -$pictureLeftPadding;
     margin-top: 5vh;
+    position: relative;
     img {
       filter: #{'grayscale' + '(' + ')'};
       object-fit: cover;
       width: 100%;
       height: 100%;
       box-shadow: 0px 0px 20px #000;
+    }
+    &-wrapper {
+      width: 20vw;
+    }
+    &-credit {
+      color: $textColour;
+      background-color: transparentize(#000, 0.7);
+      text-align: right;
+      padding: 5px 10px;
+      position: absolute;
+      width: 100%;
+      box-sizing: border-box;
+      bottom: 0;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: opacity .3s, transform 1s;
+    }
+    &:hover {
+      .picture-credit {
+        transform: translateY(0);
+        opacity: 1;
+        transition: opacity 1s, transform .3s;
+      }
     }
   }
   .content {
@@ -153,7 +187,8 @@ a[href] {
         vertical-align: middle;
       }
       .role-list {
-        margin-top: 12px;
+        $emojiOffset: 2px;
+        margin-top: 8px;
         height: 100%;
         overflow: hidden;
         ul {
@@ -177,10 +212,11 @@ a[href] {
           margin: 0;
           padding: 0;
           transform: translateY(-$itemHeight);
-          @include generateFadeItemsAnimation(1, 0.3, 4, $itemHeight);
+          @include generateFadeItemsAnimation(2, 0.3, 5, $itemHeight + $emojiOffset);
           li {
             list-style: none;
             height: $itemHeight;
+            padding-top: $emojiOffset;
           }
         }
       }

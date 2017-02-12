@@ -23,7 +23,7 @@
 <body>
 
   <div id='mainApp'>
-    <vue-aside class='brief'></vue-aside>
+    <vue-aside class='brief colour-animation'></vue-aside>
     <vue-main class='main'></vue-main>
   </div>
 
@@ -38,10 +38,12 @@
         <div class="brief-contacts">
           <div class="contact" v-for="contact in contacts">
             <label for="">{{contact.type}}</label>
-            <p v-for='contactItem in contact.items'>
+            <p v-for='contactItem in contact.items' v-if='!contact.inline'>
               <a v-if='contactItem.text' v-bind:href="contactItem.href">{{contactItem.text}}</a>
-              <a v-if='contactItem.icon' v-bind:class='contactItem.icon' v-bind:href="contactItem.href"></a>
             </p>
+            <span v-if="contact.inline">
+              <a v-for='contactItem in contact.items' v-bind:class='contactItem.icon' v-bind:href="contactItem.href"></a>
+            </span>
           </div>
         </div>
     </aside>
@@ -52,12 +54,15 @@
       <div class="picture-wrapper">
         <div class="picture">
           <img src="assets/img/me.jpg" alt="">
+          <span class="picture-credit">
+            Photo Credit: Anthony Chan @ Feb 2017
+          </span>
         </div>
       </div>
       <div class="content">
         <div class="content-name">
           <h1>SHUM</h1>
-          <h1 class='label-line'>KAYI</h1>
+          <h1 class='label-line colour-animation'>KAYI</h1>
           <h5 class='content-title'>Full Stack Web Developer</h5>
         </div>
         <div class="content-caption">
@@ -68,7 +73,7 @@
             </ul>
           </div>
         </div>
-        <div class="content-resume">
+        <div class="content-resume colour-animation">
           <button>Resume</button>
         </div>
       </div>
