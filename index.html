@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="assets/vendor/normalize.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Quicksand" rel="stylesheet">
 
 </head>
 <body>
@@ -75,6 +75,31 @@
         </div>
         <div class="content-resume-action colour-animation">
           <button v-on:click='toggleResumeMode()'>{{buttonText}}</button>
+        </div>
+        <div class="content-resume">
+          <section class="resume-objective section-short">
+            <h1 class='section-header'>Mission</h1>
+            <p>To learn new technologies and creating something interesting, with best industrial practice. To work in a team with talented, kind, and joyful people, whom I can learn from, and be friend with.</p>
+          </section>
+          <section class="resume-education section-long">
+            <h1 class="section-header">Education</h1>
+            <div class="wrapper">
+              <div class="item" v-for='educationItem of education'>
+                <div class="item-logo">
+                  <img v-bind:src="educationItem.logo" alt="">
+                </div>
+                <div class="item-details">
+                  <div class="title">
+                    <h2 class='institution'>{{educationItem.institution}}</h2>
+                    <span class="time">{{educationItem.time}}</span>
+                  </div>
+                  <div class="details">
+                    <p v-for="(detail, detailType) of educationItem.details">{{detailType}}: {{detail}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </main>

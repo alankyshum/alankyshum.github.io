@@ -107,11 +107,13 @@ a[href] {
       transition: opacity 1s, transform .3s; }
   .main .content {
     color: #fff;
+    padding-left: 20px;
+    padding-top: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100vh;
-    padding-left: 20px;
+    box-sizing: border-box;
     transition: all 0.5s; }
     .main .content-name * {
       margin: 0; }
@@ -194,6 +196,8 @@ a[href] {
         .main .content-resume-action button:focus {
           outline: none;
           border-color: #0073d5; }
+    .main .content-resume {
+      display: none; }
 
 .resume-mode .brief {
   position: relative;
@@ -213,12 +217,13 @@ a[href] {
     position: relative; }
 
 .resume-mode .main .content {
-  height: 100px;
-  padding-top: 40px; }
+  padding-top: 40px;
+  justify-content: flex-start; }
   .resume-mode .main .content-title {
     animation: moving 1.5s;
     animation-fill-mode: forwards;
-    animation-delay: 0.5s; }
+    animation-delay: 0.5s;
+    height: 0; }
 
 @keyframes moving {
   0% {
@@ -228,8 +233,27 @@ a[href] {
   100% {
     transform: translate(120px, -50px); } }
   .resume-mode .main .content-caption {
-    opacity: 0; }
+    visibility: hidden;
+    height: 0; }
   .resume-mode .main .content-resume-action {
     position: fixed;
     right: 30px;
     top: 0; }
+  .resume-mode .main .content-resume {
+    width: calc(100vw - 300px);
+    display: flex;
+    flex-wrap: wrap;
+    transform: translateY(100vh);
+    opacity: 0;
+    font-family: 'Quicksand', sans-serif;
+    animation: moveUp 2s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards; }
+
+@keyframes moveUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }

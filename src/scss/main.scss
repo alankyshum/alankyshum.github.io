@@ -156,11 +156,13 @@ a[href] {
   }
   .content {
     color: $textColour;
+    padding-left: 20px;
+    padding-top: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100vh;
-    padding-left: 20px;
+    box-sizing: border-box;
     transition: all $midAni;
     &-name {
       * {
@@ -257,6 +259,9 @@ a[href] {
         }
       }
     }
+    &-resume {
+      display: none;
+    }
   }
 }
 
@@ -286,12 +291,13 @@ a[href] {
       }
     }
     .content {
-      height: 100px;
       padding-top: 40px;
+      justify-content: flex-start;
       &-title {
         animation: moving #{1 + $midAni};
         animation-fill-mode: forwards;
         animation-delay: $midAni;
+        height: 0;
         @keyframes moving {
           0% { transform: translate(0, 0); }
           50% { transform: translate(120px, 0); }
@@ -299,12 +305,34 @@ a[href] {
         }
       }
       &-caption {
-        opacity: 0;
+        visibility: hidden;
+        height: 0;
       }
       &-resume-action {
         position: fixed;
         right: 30px;
         top: 0;
+      }
+      &-resume {
+        width: calc(100vw - 300px);
+        display: flex;
+        flex-wrap: wrap;
+        transform: translateY(100vh);
+        opacity: 0;
+        font-family: 'Quicksand', sans-serif;
+        animation: moveUp 2s;
+        animation-delay: .5s;
+        animation-fill-mode: forwards;
+        @keyframes moveUp {
+          0% {
+            opacity: 0;
+            transform: translateY(100vh);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
       }
     }
   }

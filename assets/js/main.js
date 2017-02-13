@@ -38,7 +38,24 @@ const DATA = {
       'a 👶 brother of 2 elder sisters',
       'a 🇭🇰  Hong Konger',
       'living in 🇺🇸  San Francisco'
-    ]
+    ],
+    education: [{
+      logo: 'assets/img/logos/HKUST_Logo.svg',
+      institution: 'The Hong Kong University of Science and Technology (HKUST)',
+      time: '2012-2016',
+      details: {
+        CGA: '3.132/4.3',
+        Major: 'BEng of Computer Science'
+      }
+    }, {
+      logo: 'assets/img/logos/KAIST.png',
+      institution: 'The Korea Advanced Insitute of Science and Technology (KAIST)',
+      time: 'Jan 2015 - Jun 2015',
+      details: {
+        TGA: '3.3/4.3',
+        Programmes: 'Studied: 2-D Design, Computer Network, Financial Management, Basic Korean I for Foreign students'
+      }
+    }]
   }
 };
 
@@ -69,7 +86,7 @@ function registerElements() {
   return new Vue({
     el: '#mainApp',
     data: {
-      resumeMode: false
+      resumeMode: true
     }
   });
 }
