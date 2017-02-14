@@ -198,6 +198,34 @@ a[href] {
           border-color: #0073d5; }
     .main .content-resume {
       display: none; }
+      .main .content-resume section {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box; }
+      .main .content-resume section + section {
+        padding-left: 30px; }
+      .main .content-resume .section-short {
+        width: 30%; }
+      .main .content-resume .section-long {
+        width: 70%; }
+      .main .content-resume .wrapper .item > div {
+        display: inline-block;
+        vertical-align: middle; }
+      .main .content-resume .wrapper .item-logo {
+        width: 250px;
+        text-align: center; }
+        .main .content-resume .wrapper .item-logo img {
+          width: 80%; }
+      .main .content-resume .wrapper .item-details {
+        padding: 0;
+        width: calc(100% - 270px); }
+        .main .content-resume .wrapper .item-details .details {
+          padding-left: 30px; }
+
+.content-resume .mission {
+  line-height: 2;
+  letter-spacing: 0.5px;
+  text-align: justify; }
 
 .resume-mode .brief {
   position: relative;
@@ -215,14 +243,13 @@ a[href] {
   .resume-mode .main .picture-wrapper {
     width: 0;
     position: relative; }
+  .resume-mode .main .picture img {
+    box-shadow: 0; }
 
 .resume-mode .main .content {
   padding-top: 40px;
   justify-content: flex-start; }
   .resume-mode .main .content-title {
-    animation: moving 1.5s;
-    animation-fill-mode: forwards;
-    animation-delay: 0.5s;
     height: 0; }
 
 @keyframes moving {
@@ -241,14 +268,15 @@ a[href] {
     top: 0; }
   .resume-mode .main .content-resume {
     width: calc(100vw - 300px);
+    height: 100vh;
+    overflow: scroll;
     display: flex;
     flex-wrap: wrap;
     transform: translateY(100vh);
     opacity: 0;
     font-family: 'Quicksand', sans-serif;
-    animation: moveUp 2s;
-    animation-delay: .5s;
-    animation-fill-mode: forwards; }
+    opacity: 1;
+    transform: translateY(0); }
 
 @keyframes moveUp {
   0% {

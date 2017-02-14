@@ -261,7 +261,54 @@ a[href] {
     }
     &-resume {
       display: none;
+      section {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+      }
+      section + section {
+        padding-left: 30px;
+      }
+      .section {
+        &-short {
+          width: 30%;
+        }
+        &-long {
+          width: 70%;
+        }
+      }
+      .wrapper {
+        .item {
+          > div {
+            display: inline-block;
+            vertical-align: middle;
+          }
+          &-logo {
+            width: 250px;
+            text-align: center;
+            img {
+              width: 80%;
+            }
+          }
+          &-details {
+            padding: 0;
+            width: calc(100% - 270px);
+            .details {
+              padding-left: 30px;
+            }
+          }
+        }
+      }
     }
+  }
+}
+
+// content specific
+.content-resume {
+  .mission {
+    line-height: 2;
+    letter-spacing: 0.5px;
+    text-align: justify;
   }
 }
 
@@ -289,14 +336,17 @@ a[href] {
         width: 0;
         position: relative;
       }
+      img {
+        box-shadow: 0;
+      }
     }
     .content {
       padding-top: 40px;
       justify-content: flex-start;
       &-title {
-        animation: moving #{1 + $midAni};
-        animation-fill-mode: forwards;
-        animation-delay: $midAni;
+        // animation: moving #{1 + $midAni};
+        // animation-fill-mode: forwards;
+        // animation-delay: $midAni;
         height: 0;
         @keyframes moving {
           0% { transform: translate(0, 0); }
@@ -315,14 +365,19 @@ a[href] {
       }
       &-resume {
         width: calc(100vw - 300px);
+        height: 100vh;
+        overflow: scroll;
         display: flex;
         flex-wrap: wrap;
         transform: translateY(100vh);
         opacity: 0;
         font-family: 'Quicksand', sans-serif;
-        animation: moveUp 2s;
-        animation-delay: .5s;
-        animation-fill-mode: forwards;
+        // animation: moveUp 2s;
+        // animation-delay: .5s;
+        // animation-fill-mode: forwards;
+        // debug
+      opacity: 1;
+      transform: translateY(0);
         @keyframes moveUp {
           0% {
             opacity: 0;

@@ -78,27 +78,67 @@
         </div>
         <div class="content-resume">
           <section class="resume-objective section-short">
-            <h1 class='section-header'>Mission</h1>
-            <p>To learn new technologies and creating something interesting, with best industrial practice. To work in a team with talented, kind, and joyful people, whom I can learn from, and be friend with.</p>
+            <div class="item mission">
+              <h1 class='section-header'>Mission</h1>
+              <p>To learn new technologies and creating something interesting, with best industrial practice. To work in a team with talented, kind, and joyful people, whom I can learn from, and be friend with.</p>
+            </div>
           </section>
           <section class="resume-education section-long">
             <h1 class="section-header">Education</h1>
             <div class="wrapper">
               <div class="item" v-for='educationItem of education'>
                 <div class="item-logo">
-                  <img v-bind:src="educationItem.logo" alt="">
+                  <img v-bind:src="educationItem.logo" alt="" v-bind:style='educationItem.logoStyle'>
                 </div>
                 <div class="item-details">
                   <div class="title">
-                    <h2 class='institution'>{{educationItem.institution}}</h2>
-                    <span class="time">{{educationItem.time}}</span>
+                    <h3 class='institution'>{{educationItem.programme}} <small>{{educationItem.time}}</small></h3>
                   </div>
                   <div class="details">
+                    <h3>{{educationItem.institution}}</h3>
                     <p v-for="(detail, detailType) of educationItem.details">{{detailType}}: {{detail}}</p>
                   </div>
                 </div>
               </div>
             </div>
+
+            <h1 class="section-header">Recognitions</h1>
+            <div class="wrapper">
+              <div class="item" v-for="recognition in recognitions">
+                <div class="item-logo">
+                  <img v-bind:src="recognition.logo" alt="" v-bind:style='recognition.logoStyle'>
+                </div>
+                <div class="item-details">
+                  <div class="title">
+                    <h3 class="award">{{recognition.award}} <small class="time">{{recognition.time}}</small></h3>
+                  </div>
+                  <div class="details">
+                    <h3>{{recognition.organiser}}</h3>
+                    <p>{{recognition.details}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h1 class="section-header">Work Experience</h1>
+            <div class="wrapper">
+              <div class="item" v-for="work in works">
+                <div class="item-logo">
+                  <img v-bind:src="work.logo" alt="" v-bind:style='work.logoStyle'>
+                </div>
+                <div class="item-details">
+                  <div class="title">
+                    <h3 class="award">{{work.title}} <small class="time">{{work.time}}</small></h3>
+                  </div>
+                  <div class="details">
+                    <h3>{{work.company}}</h3>
+                    <p>{{work.duties}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
           </section>
         </div>
       </div>
