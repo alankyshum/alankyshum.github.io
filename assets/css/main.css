@@ -215,7 +215,9 @@ a[href] {
         width: 250px;
         text-align: center; }
         .main .content-resume .wrapper .item-logo img {
-          width: 80%; }
+          width: 80%;
+          color: antiquewhite;
+          }
       .main .content-resume .wrapper .item-details {
         padding: 0;
         width: calc(100% - 270px); }

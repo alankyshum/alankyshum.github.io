@@ -73,36 +73,31 @@ const DATA = {
       details: 'Award to student in recognition to their outstanding performance in HKDSE public examination.'
     }],
     works: [{
-      title: 'Full-stack web developer',
-      time: 'Aug 2016 – Present',
+      logo: 'assets/img/logos/compass.svg',
+      title: 'Full-stack web developer | Intern -> Remote -> Full-Time',
+      time: 'Aug 2015 – Present',
       company: 'Startup Compass Inc., San Francisco, the USA',
       duties: 'Responsible for building the benchmarking platform from front-end (Angular.JS) and back-end side (Ruby + Postgresql).'
     }, {
+      logo: 'assets/img/logos/fanswifi.png',
       title: 'Full-stack web developer',
       time: 'Jun 2016 – Jul 2016',
       company: 'Fanswifi., Hong Kong',
       duties: 'Contributed to building social login feature, from both front-end and back- end side (Node.JS in ES6 for APIs+ PHP for static assets server).'
     }, {
-      title: 'Front-end developer (Remote)',
-      time: 'Aug 2015 – May 2016',
-      company: 'Startup Compass Inc., San Francisco, the USA',
-      duties: 'Responsible for building the front-end of the SAAS website of the company.'
-    }, {
-      title: 'Web developer trainee',
-      time: 'July 2015 – Aug 2015',
-      company: 'Startup Compass Inc., San Francisco, the USA',
-      duties: 'Responsible for building the front-end of the SAAS website of the company.'
-    }, {
+      logo: 'assets/img/logos/keptme.png',
       title: 'Software Engineer Intern (Part-time)',
       time: 'Sep 2015 – Nov 2015',
       company: 'Keptme, HK',
       duties: 'Responsible for front-end development of the web platform.'
     }, {
+      logo: 'assets/img/logos/thecareerworks.png',
       title: 'July 2012 – May 2014',
       time: 'Technical Support Role',
       company: 'Omnitech Info Solutions (Career Works), HK',
       duties: 'Provide technical support services as a helpdesk role and standby for solving technical issues encountered by the staff workers of the investment banks we serve.'
     }, {
+      logo: 'assets/img/logos/PCCW.png',
       title: 'July 2013 – August 2013',
       time: 'Network Operation Engineer (Internship)',
       company: 'PCCW, HK',
