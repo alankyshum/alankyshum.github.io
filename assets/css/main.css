@@ -215,9 +215,7 @@ a[href] {
         width: 250px;
         text-align: center; }
         .main .content-resume .wrapper .item-logo img {
-          width: 80%;
-          color: antiquewhite;
-          }
+          width: 80%; }
       .main .content-resume .wrapper .item-details {
         padding: 0;
         width: calc(100% - 270px); }
@@ -252,6 +250,9 @@ a[href] {
   padding-top: 40px;
   justify-content: flex-start; }
   .resume-mode .main .content-title {
+    animation: moving 1.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
     height: 0; }
 
 @keyframes moving {
@@ -277,8 +278,9 @@ a[href] {
     transform: translateY(100vh);
     opacity: 0;
     font-family: 'Quicksand', sans-serif;
-    opacity: 1;
-    transform: translateY(0); }
+    animation: moveUp 2s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards; }
 
 @keyframes moveUp {
   0% {

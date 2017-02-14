@@ -344,9 +344,9 @@ a[href] {
       padding-top: 40px;
       justify-content: flex-start;
       &-title {
-        // animation: moving #{1 + $midAni};
-        // animation-fill-mode: forwards;
-        // animation-delay: $midAni;
+        animation: moving #{1 + $midAni};
+        animation-fill-mode: forwards;
+        animation-delay: $midAni;
         height: 0;
         @keyframes moving {
           0% { transform: translate(0, 0); }
@@ -372,12 +372,9 @@ a[href] {
         transform: translateY(100vh);
         opacity: 0;
         font-family: 'Quicksand', sans-serif;
-        // animation: moveUp 2s;
-        // animation-delay: .5s;
-        // animation-fill-mode: forwards;
-        // debug
-      opacity: 1;
-      transform: translateY(0);
+        animation: moveUp 2s;
+        animation-delay: .5s;
+        animation-fill-mode: forwards;
         @keyframes moveUp {
           0% {
             opacity: 0;
