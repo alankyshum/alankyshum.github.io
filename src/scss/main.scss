@@ -16,18 +16,41 @@ $midAni: .5s;
 @mixin minWidth($q) {
   @media screen and (min-width: $q) { @content }
 }
+@mixin generateFadeItemsAnimation($showDuration, $fadeDuration, $itemsCnt, $displacement) {
+  $totalDuration: ($showDuration + $fadeDuration) * $itemsCnt;
+  animation: fadeItems #{$totalDuration}s infinite;
+  @keyframes fadeItems {
+    @for $i from 0 through $itemsCnt - 1 {
+      #{($fadeDuration + $showDuration) * $i / $totalDuration * 100}% {
+        transform: translateY(#{-$displacement * $i});
+      }
+      #{($showDuration * ($i + 1) + $fadeDuration * $i) / $totalDuration * 100}% {
+        transform: translateY(#{-$displacement * $i});
+      }
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
 
 :root {
   --theme-color: $themeColour;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
-  background-color: #111;
+  background-color: #171717;
   filter: hue-rotate(10deg);
 }
 
 a[href] {
   text-decoration: none;
+}
+
+blockquote {
+  line-height: 2;
+  letter-spacing: 0.5px;
+  text-align: justify;
 }
 
 .colour-animation {
@@ -206,23 +229,6 @@ a[href] {
         height: 100%;
         overflow: hidden;
         ul {
-          @mixin generateFadeItemsAnimation($showDuration, $fadeDuration, $itemsCnt, $displacement) {
-            $totalDuration: ($showDuration + $fadeDuration) * $itemsCnt;
-            animation: fadeItems #{$totalDuration}s infinite;
-            @keyframes fadeItems {
-              @for $i from 0 through $itemsCnt - 1 {
-                #{($fadeDuration + $showDuration) * $i / $totalDuration * 100}% {
-                  transform: translateY(#{-$displacement * $i});
-                }
-                #{($showDuration * ($i + 1) + $fadeDuration * $i) / $totalDuration * 100}% {
-                  transform: translateY(#{-$displacement * $i});
-                }
-              }
-              100% {
-                transform: translateY(0);
-              }
-            }
-          }
           margin: 0;
           padding: 0;
           transform: translateY(-$itemHeight);
@@ -293,6 +299,11 @@ a[href] {
           &-details {
             padding: 0;
             width: calc(100% - 270px);
+            .title {
+              .color-animation {
+                color: $lightenThemeColour;
+              }
+            }
             .details {
               padding-left: 30px;
             }
@@ -300,15 +311,6 @@ a[href] {
         }
       }
     }
-  }
-}
-
-// content specific
-.content-resume {
-  .mission {
-    line-height: 2;
-    letter-spacing: 0.5px;
-    text-align: justify;
   }
 }
 
